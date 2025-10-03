@@ -1,7 +1,11 @@
 require("dotenv").config();
-const { cache } = require("react");
+const connectDB = require("./src/config/db/db");
+const cacheClient = require("./src/")
+
 const app = require("./src/app");
 const socketIo = require("socket.io");
+
+connectDB();
 
 
 const io = socketIos(server);
@@ -17,7 +21,9 @@ cacheClient.on("error", (error)=>{
 
 io.on("connection", (socket)=>{
     console.log("user connected", socket.id);
-})
+});
+
+
 
 
 
